@@ -4,6 +4,7 @@ import pino from 'pino-http';
 import contactsRouter from './routers/contacts.js';
 import { getEnvVar as env} from './utils/getEnvVar.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -24,6 +25,8 @@ export const setupServer = () => {
   app.use(contactsRouter);
 
   app.use('*', notFoundHandler);
+
+  app.use(errorHandler);
 
   app.listen(PORT, () => {
     console.log(`Server is running on ${PORT} port`);
