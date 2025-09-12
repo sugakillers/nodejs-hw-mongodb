@@ -3,7 +3,7 @@ import * as contactsServices from '../services/contacts.js';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
-import { ctrlWrapper } from '../utils/ctrlWrapper.js';
+
 
 export const getAll = async (req, res) => {
 
@@ -77,12 +77,3 @@ export const deleteOne = async (req, res) => {
   res.status(204).send();
 };
 
-
-
-export default {
-  getAll: ctrlWrapper(getAll),
-  getById: ctrlWrapper(getById),
-  create: ctrlWrapper(create),
-  update: ctrlWrapper(update),
-  deleteOne: ctrlWrapper(deleteOne),
-};
