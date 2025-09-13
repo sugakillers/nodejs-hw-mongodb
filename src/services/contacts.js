@@ -31,19 +31,10 @@ export const getAll = async ({ page, perPage, sortOrder, sortBy, filter }) => {
   };
 };
 
-export const getById = (contactId) => {
-  return ContactsCollection.findById(contactId);
-};
-export const create = (payload) => {
-  return ContactsCollection.create(payload);
-};
-export const update = (contactId, payload, options = { new: true }) => {
-  return ContactsCollection.findOneAndUpdate(
-    { _id: contactId },
-    payload,
-    options,
-  );
-};
-export const deleteOne = (contactId) => {
-  return ContactsCollection.findOneAndDelete({ _id: contactId });
-};
+export const getById = (contactId) => ContactsCollection.findById(contactId);
+export const getContact = (filter) => ContactsCollection.findOne(filter);
+export const create = (payload) => ContactsCollection.create(payload);
+export const update = (filter, payload, options = { new: true }) => {
+  return ContactsCollection.findOneAndUpdate(filter, payload, options);};
+export const deleteOne = (filter) =>
+  ContactsCollection.findOneAndDelete(filter);
