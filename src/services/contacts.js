@@ -1,5 +1,4 @@
 import { ContactsCollection } from '../db/models/contacts.js';
-
 import { calculate } from '../utils/calculate.js';
 
 export const getAll = async ({ page, perPage, sortOrder, sortBy, filter }) => {

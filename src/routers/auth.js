@@ -8,20 +8,20 @@ const authRouter = Router();
 authRouter.post(
   '/register',
   validateBody(authRegisterSchema),
-  ctrlWrapper(authControllers.registerCtrl),
+  ctrlWrapper(authControllers.registerController),
 );
 authRouter.post(
   '/login',
   validateBody(authLoginSchema),
-  ctrlWrapper(authControllers.loginCtrl),
+  ctrlWrapper(authControllers.loginController),
 );
 authRouter.post(
     '/refresh',
-    ctrlWrapper(authControllers.refreshTokenCtrl)
+    ctrlWrapper(authControllers.refreshTokenController)
 );
 authRouter.post(
     '/logout',
-    ctrlWrapper(authControllers.logoutCtrl)
+    ctrlWrapper(authControllers.logoutController)
 );
 
 export default authRouter;

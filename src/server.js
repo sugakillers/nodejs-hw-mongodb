@@ -5,6 +5,8 @@ import contactsRouter from './routers/contacts.js';
 import { getEnvVar as env} from './utils/getEnvVar.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import cookieParser from 'cookie-parser';
+import authRouter from './routers/auth.js';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -12,8 +14,8 @@ export const setupServer = () => {
   const app = express();
 
   app.use(cors());
-
   app.use(express.json());
+  app.use(cookieParser());
 
   app.use(
     pino({
@@ -24,6 +26,7 @@ export const setupServer = () => {
       }),
   );
 
+  app.use('/auth', authRouter);
   app.use('/contacts', contactsRouter);
 
   app.use('*', notFoundHandler);

@@ -1,15 +1,15 @@
 import createHttpError from 'http-errors';
 import { UserCollection } from '../db/models/user.js';
 import { SessionCollection } from '../db/models/session.js';
-import { FIFTEEN_MINUTES, THIRTY_DAYS } from '../constants/users.js';
+import { fifteenMinutes, thirtyDays } from '../constants/users.js';
 import bcrypt from 'bcrypt';
 import { randomBytes } from 'crypto';
 
 const createSessionData = () => ({
   accessToken: randomBytes(30).toString('base64'),
   refreshToken: randomBytes(30).toString('base64'),
-  accessTokenValidUntil: new Date(Date.now() + FIFTEEN_MINUTES),
-  refreshTokenValidUntil: new Date(Date.now() + THIRTY_DAYS),
+  accessTokenValidUntil: new Date(Date.now() + fifteenMinutes),
+  refreshTokenValidUntil: new Date(Date.now() + thirtyDays),
 });
 
 export const register = async (payload) => {

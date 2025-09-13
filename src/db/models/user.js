@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { EMAIL_REGEX } from '../../constants/users.js';
+import { emailRegex } from '../../constants/users.js';
 
 const usersSchema = new Schema(
   {
@@ -9,7 +9,7 @@ const usersSchema = new Schema(
     },
     email: {
       type: String,
-      match: EMAIL_REGEX,
+      match: emailRegex,
       unique: true,
       required: true,
     },
