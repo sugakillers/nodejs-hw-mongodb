@@ -5,7 +5,7 @@ export const getAll = async ({ page, perPage, sortOrder, sortBy, filter }) => {
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
-  const contactsQuery = ContactsCollection.find();
+  const contactsQuery = ContactsCollection.find(filter);
   if (filter.type) {
     contactsQuery.where('contactType').equals(filter.type);
   }
@@ -30,7 +30,7 @@ export const getAll = async ({ page, perPage, sortOrder, sortBy, filter }) => {
   };
 };
 
-export const getById = (contactId) => ContactsCollection.findById(contactId);
+export const getById = ({ _id, userId }) => ContactsCollection.findOne({ _id, userId });
 export const getContact = (filter) => ContactsCollection.findOne(filter);
 export const create = (payload) => ContactsCollection.create(payload);
 export const update = (filter, payload, options = { new: true }) => {

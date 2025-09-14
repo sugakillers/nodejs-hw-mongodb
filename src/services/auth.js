@@ -6,8 +6,8 @@ import bcrypt from 'bcrypt';
 import { randomBytes } from 'crypto';
 
 const createSessionData = () => ({
-  accessToken: randomBytes(30).toString('base64'),
-  refreshToken: randomBytes(30).toString('base64'),
+  accessToken: randomBytes(30).toString('hex'),
+  refreshToken: randomBytes(30).toString('hex'),
   accessTokenValidUntil: new Date(Date.now() + fifteenMinutes),
   refreshTokenValidUntil: new Date(Date.now() + thirtyDays),
 });
