@@ -10,4 +10,4 @@ https://nodejs-hw-mongodb-yabk.onrender.com
 https://hw4-c5qe.onrender.com
 
 [`hw5-auth`](https://github.com/sugakillers/nodejs-hw-mongodb/tree/hw5-auth)
-https://hw5-m0hl.onrender.com
+https://hw5-787e.onrender.com
