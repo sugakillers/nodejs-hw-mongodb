@@ -11,3 +11,6 @@ https://hw4-c5qe.onrender.com
 
 [`hw5-auth`](https://github.com/sugakillers/nodejs-hw-mongodb/tree/hw5-auth)
 https://hw5-787e.onrender.com
+
+[`hw6-email-and-images`](https://github.com/sugakillers/nodejs-hw-mongodb/tree/hw6-email-and-images)
+https://hw6-r0xx.onrender.com
