@@ -18,7 +18,7 @@ export const createContactSchema = Joi.object({
     .messages({
       'any.required': 'Contact type  is required',
     }),
-    photo: Joi.string().uri(),
+    photo: Joi.string().uri().optional()
 });
 
 export const updateContactSchema = Joi.object({
@@ -31,4 +31,5 @@ export const updateContactSchema = Joi.object({
   email: Joi.string().min(3).max(20),
   isFavourite: Joi.boolean(),
   contactType: Joi.string().valid('work', 'home', 'personal'),
+  photo: Joi.string().uri().optional()
 });

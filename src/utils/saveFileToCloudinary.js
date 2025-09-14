@@ -1,6 +1,5 @@
 import { v2 as cloudinary } from 'cloudinary';
 import { unlink } from 'node:fs/promises';
-
 import { getEnvVar } from './getEnvVar.js';
 
 const cloud_name = getEnvVar('CLOUDINARY_CLOUD_NAME');

@@ -44,12 +44,13 @@ export const getById = async (req, res) => {
 };
 
 export const create = async (req, res) => {
-  let photo;
+
   if (req.file) {
-    photo = await saveFiletoCloidinary(req.file);
+    const photo = await saveFiletoCloidinary(req.file);
+    req.body.photo = photo;
   }
   const { _id: userId } = req.user;
-  const contact = await contactsServices.create({ ...req.body, userId, photo });
+  const contact = await contactsServices.create({ ...req.body, userId,});
 
   res.status(201).json({
     status: 201,
@@ -59,13 +60,13 @@ export const create = async (req, res) => {
 };
 
 export const update = async (req, res) => {
-  let photo;
   if (req.file) {
-    photo = await saveFiletoCloidinary(req.file);
+    const photo = await saveFiletoCloidinary(req.file);
+    req.body.photo = photo;
   }
   const { contactId: _id } = req.params;
   const { _id: userId } = req.user;
-  const contact = await contactsServices.update({ _id, userId }, req.body, photo);
+  const contact = await contactsServices.update({ _id, userId }, req.body );
 
   if (!contact) {
     throw createHttpError(404, 'Contact not found');

@@ -34,7 +34,7 @@ export const getAll = async ({ page, perPage, sortOrder, sortBy, filter }) => {
 export const getById = ({ _id, userId }) => ContactsCollection.findOne({ _id, userId });
 export const getContact = (filter) => ContactsCollection.findOne(filter);
 export const create = (payload) => ContactsCollection.create(payload);
-export const update = (filter, payload, options = { new: true }) => {
-  return ContactsCollection.findOneAndUpdate(filter, payload, options);};
+export const update = (filter, payload) => {
+  return ContactsCollection.findOneAndUpdate(filter, payload, { new: true });};
 export const deleteOne = (filter) =>
   ContactsCollection.findOneAndDelete(filter);
