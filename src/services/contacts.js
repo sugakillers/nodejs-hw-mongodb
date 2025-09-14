@@ -4,7 +4,6 @@ import { calculate } from '../utils/calculate.js';
 export const getAll = async ({ page, perPage, sortOrder, sortBy, filter }) => {
   const limit = perPage;
   const skip = (page - 1) * perPage;
-
   const contactsQuery = ContactsCollection.find(filter);
   if (filter.type) {
     contactsQuery.where('contactType').equals(filter.type);
@@ -12,7 +11,9 @@ export const getAll = async ({ page, perPage, sortOrder, sortBy, filter }) => {
   if (filter.isFavourite !== undefined) {
     contactsQuery.where('isFavourite').equals(filter.isFavourite);
   }
-
+  if (filter.userId) {
+    contactsQuery.where('userId').equals(filter.userId);
+  }
   const contactsCount = await ContactsCollection.find()
     .merge(contactsQuery)
     .countDocuments();

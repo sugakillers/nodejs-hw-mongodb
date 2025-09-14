@@ -3,7 +3,7 @@ import * as contactsServices from '../services/contacts.js';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
-
+import { saveFiletoCloidinary } from '../utils/saveFileToCloudinary.js';
 
 export const getAll = async (req, res) => {
 
@@ -44,8 +44,12 @@ export const getById = async (req, res) => {
 };
 
 export const create = async (req, res) => {
+  let photo;
+  if (req.file) {
+    photo = await saveFiletoCloidinary(req.file);
+  }
   const { _id: userId } = req.user;
-  const contact = await contactsServices.create({ ...req.body, userId });
+  const contact = await contactsServices.create({ ...req.body, userId, photo });
 
   res.status(201).json({
     status: 201,
@@ -55,9 +59,13 @@ export const create = async (req, res) => {
 };
 
 export const update = async (req, res) => {
+  let photo;
+  if (req.file) {
+    photo = await saveFiletoCloidinary(req.file);
+  }
   const { contactId: _id } = req.params;
   const { _id: userId } = req.user;
-  const contact = await contactsServices.update({ _id, userId }, req.body);
+  const contact = await contactsServices.update({ _id, userId }, req.body, photo);
 
   if (!contact) {
     throw createHttpError(404, 'Contact not found');
