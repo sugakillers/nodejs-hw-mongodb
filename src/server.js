@@ -7,11 +7,19 @@ import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import cookieParser from 'cookie-parser';
 import authRouter from './routers/auth.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+import swaggerUi from 'swagger-ui-express';
+import YAML from 'yamljs';
 
 const PORT = Number(env('PORT', '3000'));
 
 export const setupServer = () => {
   const app = express();
+
+  const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
   app.use(cors());
   app.use(express.json());
@@ -26,6 +34,10 @@ export const setupServer = () => {
       }),
   );
 
+
+  const swaggerDocument = YAML.load(path.resolve(__dirname, '../swagger/bundle.yaml'));
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
   app.use('/auth', authRouter);
   app.use('/contacts', contactsRouter);
 
@@ -35,5 +47,6 @@ export const setupServer = () => {
 
   app.listen(PORT, () => {
     console.log(`Server is running on ${PORT} port`);
+    console.log(`Swagger UI: http://localhost:${PORT}/api-docs`);
   });
 };

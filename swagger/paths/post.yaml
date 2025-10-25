@@ -1,22 +1,23 @@
-tags:
-  - Contacts
-summary: Create a new contact
-operationId: createContact
-description: Adds a new contact to the list.
-security:
-  - bearerAuth: []
-requestBody:
-  required: true
-  content:
-    application/json:
-      schema:
-        $ref: "../schemas/contact.yaml"
-responses:
-  "201":
-    description: Contact created
+post:
+  tags:
+    - Contacts
+  summary: Create a new contact
+  operationId: createContact
+  description: Adds a new contact to the list.
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
     content:
       application/json:
         schema:
-          $ref: "../schemas/contact.yaml"
-  "404":
-    description: Contact not found
+          $ref: '../schemas/contact.yaml'
+  responses:
+    "201":
+      description: Contact created
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/contact.yaml'
+    "404":
+      description: Contact not found

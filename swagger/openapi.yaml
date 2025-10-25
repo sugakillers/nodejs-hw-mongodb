@@ -1,0 +1,24 @@
+openapi: 3.0.0
+info:
+  title: Contacts API
+  version: 1.0.0
+
+paths:
+  /contacts:
+    get:
+      $ref: './paths/get.yaml#/get'
+    post:
+      $ref: './paths/post.yaml#/post'
+
+  /contacts/{contactId}:
+    get:
+      $ref: './paths/getID.yaml#/get'
+    patch:
+      $ref: './paths/patch.yaml#/patch'
+    delete:
+      $ref: './paths/delete.yaml#/delete'
+
+components:
+  schemas:
+    contact:
+      $ref: './schemas/contact.yaml'
