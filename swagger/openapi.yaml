@@ -12,17 +12,17 @@ servers:
 paths:
   /contacts:
     get:
-      $ref: './paths/get.yaml'
+      $ref: './paths/get.yaml#/get'
     post:
-      $ref: './paths/post.yaml'
+      $ref: './paths/post.yaml#/post'
 
   /contacts/{contactId}:
     get:
-      $ref: './paths/getID.yaml'
+      $ref: './paths/getID.yaml#/get'
     patch:
-      $ref: './paths/patch.yaml'
+      $ref: './paths/patch.yaml#/patch'
     delete:
-      $ref: './paths/delete.yaml'
+      $ref: './paths/delete.yaml#/delete'
 
 components:
   schemas:

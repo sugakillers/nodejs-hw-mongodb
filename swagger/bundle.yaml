@@ -379,6 +379,7 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+      bearerFormat: JWT
   responses:
     '400':
       description: Bad Request. The provided contact ID is invalid.

@@ -1,25 +1,26 @@
-tags:
-  - Contacts
-summary: Delete contact by id
-operationId: deleteContact
-description: 'Delete a contact'
-security:
-  - bearerAuth: []
-parameters:
-  - in: path
-    name: contactId
-    required: true
-    schema:
-      type: string
-      example: '8e5d6ef5kf84hf73'
-responses:
-  '204':
-    description: Delete a contact
-  '400':
-    $ref: '../errors/400.yaml'
-  '401':
-    $ref: '../errors/401.yaml'
-  '404':
-    $ref: '../errors/404.yaml'
-  '500':
-    $ref: '../errors/500.yaml'
+delete:
+  tags:
+    - Contacts
+  summary: Delete contact by id
+  operationId: deleteContact
+  description: 'Delete a contact'
+  security:
+    - bearerAuth: []
+  parameters:
+    - in: path
+      name: contactId
+      required: true
+      schema:
+        type: string
+        example: '8e5d6ef5kf84hf73'
+  responses:
+    '204':
+      description: Delete a contact
+    '400':
+      $ref: '../errors/400.yaml'
+    '401':
+      $ref: '../errors/401.yaml'
+    '404':
+      $ref: '../errors/404.yaml'
+    '500':
+      $ref: '../errors/500.yaml'
