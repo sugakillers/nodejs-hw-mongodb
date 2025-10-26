@@ -3,22 +3,34 @@ info:
   title: Contacts API
   version: 1.0.0
 
+servers:
+  - url: https://hw7-cmo4.onrender.com
+    description: Production server
+  - url: http://localhost:3000
+    description: Local server
+
 paths:
   /contacts:
     get:
-      $ref: './paths/get.yaml#/get'
+      $ref: './paths/get.yaml'
     post:
-      $ref: './paths/post.yaml#/post'
+      $ref: './paths/post.yaml'
 
   /contacts/{contactId}:
     get:
-      $ref: './paths/getID.yaml#/get'
+      $ref: './paths/getID.yaml'
     patch:
-      $ref: './paths/patch.yaml#/patch'
+      $ref: './paths/patch.yaml'
     delete:
-      $ref: './paths/delete.yaml#/delete'
+      $ref: './paths/delete.yaml'
 
 components:
   schemas:
     contact:
       $ref: './schemas/contact.yaml'
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -34,8 +34,7 @@ const __dirname = path.dirname(__filename);
       }),
   );
 
-
-  const swaggerDocument = YAML.load(path.resolve(__dirname, '../swagger/bundle.yaml'));
+  const swaggerDocument = YAML.load(path.resolve(__dirname, '../swagger/openapi.yaml'));
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
   app.use('/auth', authRouter);

@@ -1,11 +1,11 @@
 type: object
 required:
-  - _id
+  - contactId
   - name
   - phoneNumber
   - userId
 properties:
-  _id:
+  contactId:
     description: "Contact's id"
     type: string
     example: 8e5d6ef5kf84hf73
