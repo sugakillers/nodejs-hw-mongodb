@@ -1,0 +1,302 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Contacts",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "description": "This is a REST API for managing contacts and user authentication."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    },
+    {
+      "url": null
+    }
+  ],
+  "tags": [
+    {
+      "name": "Contacts",
+      "description": "Contact operations"
+    },
+    {
+      "name": "Auth",
+      "description": "Registration and authorization"
+    }
+  ],
+  "paths": {
+    "/contacts": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Get a list of contacts",
+        "operationId": "getContacts",
+        "description": "Returns a list of all the user's contacts",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of contacts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/contact"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Create a new contact",
+        "operationId": "createContact",
+        "description": "Adds a new contact to the list.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contact"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Contact created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contact"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contacts/{contactId}": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Get contact by ID",
+        "operationId": "getContactById",
+        "description": "Returns a contact by its ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "contactId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успіх",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contact"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Contact not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Update contact",
+        "operationId": "updateContact",
+        "description": "Updates contact details by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "contactId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contact"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The contact has been updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contact"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Contact not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Delete contact",
+        "operationId": "deleteContact",
+        "description": "Deletes contact by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "contactId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact deleted successfully"
+          },
+          "404": {
+            "description": "Contact not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "contact": {
+        "type": "object",
+        "required": [
+          "_id",
+          "name",
+          "phoneNumber",
+          "userId"
+        ],
+        "properties": {
+          "_id": {
+            "description": "Contact's id",
+            "type": "string",
+            "example": "8e5d6ef5kf84hf73"
+          },
+          "name": {
+            "description": "Contact's name",
+            "type": "string",
+            "example": "John Doe"
+          },
+          "phoneNumber": {
+            "description": "Contact's phone",
+            "type": "string",
+            "example": "+380000000000"
+          },
+          "email": {
+            "description": "Contact's email",
+            "type": "string",
+            "example": "john@gmail.com"
+          },
+          "photo": {
+            "description": "Link to contact's photo",
+            "type": "string",
+            "example": "https://res.cloudinary.com/prod/image/upload/ar_1:1,c_auto,g_auto,w_500/r_45/me/rc/animals-4.png"
+          },
+          "isFavourite": {
+            "description": "Whether is contact favorite",
+            "type": "boolean",
+            "example": false
+          },
+          "contactType": {
+            "description": "Contact's type",
+            "type": "string",
+            "example": "work",
+            "enum": [
+              "work",
+              "home",
+              "personal"
+            ]
+          },
+          "userId": {
+            "description": "Contact's user id",
+            "type": "string",
+            "example": "john@gmail.com"
+          }
+        }
+      }
+    }
+  }
+}
