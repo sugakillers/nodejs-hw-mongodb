@@ -1,0 +1,41 @@
+Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host hw6-r0xx.onrender.com:443 was resolved.
+* IPv6: (none)
+* IPv4: 216.24.57.251, 216.24.57.7
+*   Trying 216.24.57.251:443...
+* schannel: disabled automatic use of client certificate
+* Connected to hw6-r0xx.onrender.com (216.24.57.251) port 443
+* using HTTP/1.x
+> POST /auth/send-reset-email HTTP/1.1
+> Host: hw6-r0xx.onrender.com
+> User-Agent: curl/8.11.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 35
+> 
+} [35 bytes data]
+* upload completely sent off: 35 bytes
+100    35    0     0  100    35      0     21  0:00:01  0:00:01 --:--:--    21100    35    0     0  100    35      0     13  0:00:02  0:00:02 --:--:--    13100    35    0     0  100    35      0      9  0:00:03  0:00:03 --:--:--     9100    35    0     0  100    35      0      7  0:00:05  0:00:04  0:00:01     7100    35    0     0  100    35      0      6  0:00:05  0:00:05 --:--:--     6100    35    0     0  100    35      0      5  0:00:07  0:00:06  0:00:01     0100    35    0     0  100    35      0      4  0:00:08  0:00:07  0:00:01     0100    35    0     0  100    35      0      4  0:00:08  0:00:08 --:--:--     0100    35    0     0  100    35      0      3  0:00:11  0:00:09  0:00:02     0100    35    0     0  100    35      0      3  0:00:11  0:00:10  0:00:01     0100    35    0     0  100    35      0      2  0:00:17  0:00:11  0:00:06     0100    35    0     0  100    35      0      2  0:00:17  0:00:12  0:00:05     0100    35    0     0  100    35      0      2  0:00:17  0:00:13  0:00:04     0100    35    0     0  100    35      0      2  0:00:17  0:00:14  0:00:03     0100    35    0     0  100    35      0      2  0:00:17  0:00:15  0:00:02     0100    35    0     0  100    35      0      2  0:00:17  0:00:16  0:00:01     0100    35    0     0  100    35      0      1  0:00:35  0:00:17  0:00:18     0100    35    0     0  100    35      0      1  0:00:35  0:00:18  0:00:17     0100    35    0     0  100    35      0      1  0:00:35  0:00:19  0:00:16     0100    35    0     0  100    35      0      1  0:00:35  0:00:20  0:00:15     0100    35    0     0  100    35      0      1  0:00:35  0:00:21  0:00:14     0100    35    0     0  100    35      0      1  0:00:35  0:00:22  0:00:13     0100    35    0     0  100    35      0      1  0:00:35  0:00:23  0:00:12     0100    35    0     0  100    35      0      1  0:00:35  0:00:24  0:00:11     0100    35    0     0  100    35      0      1  0:00:35  0:00:25  0:00:10     0100    35    0     0  100    35      0      1  0:00:35  0:00:26  0:00:09     0100    35    0     0  100    35      0      1  0:00:35  0:00:27  0:00:08     0100    35    0     0  100    35      0      1  0:00:35  0:00:28  0:00:07     0100    35    0     0  100    35      0      1  0:00:35  0:00:29  0:00:06     0100    35    0     0  100    35      0      1  0:00:35  0:00:30  0:00:05     0100    35    0     0  100    35      0      1  0:00:35  0:00:31  0:00:04     0* schannel: remote party requests renegotiation
+* schannel: renegotiating SSL/TLS connection
+* schannel: SSL/TLS connection renegotiated
+< HTTP/1.1 500 Internal Server Error
+< Date: Thu, 23 Oct 2025 12:29:07 GMT
+< Content-Type: application/json; charset=utf-8
+< Transfer-Encoding: chunked
+< Connection: keep-alive
+< CF-RAY: 99313c37e8c3f9df-MAD
+< access-control-allow-origin: *
+< etag: W/"75-nXRmLzl27HL/elPqWwjuMBG5kyo"
+< rndr-id: a5950cf4-0a36-46a5
+< vary: Accept-Encoding
+< x-powered-by: Express
+< x-render-origin-server: Render
+< cf-cache-status: DYNAMIC
+< Server: cloudflare
+< alt-svc: h3=":443"; ma=86400
+< 
+{ [123 bytes data]
+100   152    0   117  100    35      3      1  0:00:35  0:00:32  0:00:03    27100   152    0   117  100    35      3      1  0:00:35  0:00:32  0:00:03    35{"status":500,"message":"InternalServerError","data":{"message":"Failed to send the email, please try again later."}}
+* Connection #0 to host hw6-r0xx.onrender.com left intact
